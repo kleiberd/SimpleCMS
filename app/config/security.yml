@@ -2,10 +2,16 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    encoders:
+        AppBundle\Entity\Admin:
+            algorithm: bcrypt
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        admin_provider:
+            entity:
+                class: AppBundle:Admin
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -22,3 +28,18 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login
+                default_target_path: /admin
+                csrf_provider: security.csrf.token_manager
+
+            provider: admin_provider
+
+            logout:
+                path: /admin/logout
+                target: /admin/login
+
+    access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
