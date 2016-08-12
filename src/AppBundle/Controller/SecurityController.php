@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SecurityController extends Controller
 {
@@ -29,5 +30,13 @@ class SecurityController extends Controller
                 'error'         => $error,
             )
         );
+    }
+
+    /**
+     * @Route("/admin/test", name="test")
+     */
+    public function testAction()
+    {
+        return new Response('<html><body>TEst Action</body></html>');
     }
 }

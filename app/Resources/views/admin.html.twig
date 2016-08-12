@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>Dashboard | SimpleCMS</title>
+
+    {% include 'admin/includes/head.html.twig' %}
+
+    {% block style %}{% endblock %}
+
+</head>
+
+<body class="site-navbar-small dashboard">
+
+{% include 'admin/includes/nav.html.twig' %}
+
+{% include 'admin/includes/menu.html.twig' %}
+
+<!-- Page -->
+<div class="page animsition">
+
+    {% block header %}{% endblock %}
+
+    <div class="page-content container-fluid">
+
+        {% block content %}{% endblock %}
+
+    </div>
+</div>
+<!-- End Page -->
+
+{% include 'admin/includes/footer.html.twig' %}
+
+{% include 'admin/includes/script.html.twig' %}
+
+{% block script %}{% endblock %}
+
+</body>
+</html>

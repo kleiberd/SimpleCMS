@@ -1,13 +1,24 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<head>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('assets/js/ie/html5shiv.js') }}"></script><![endif]-->
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('assets/css/ie8.css') }}" /><![endif]-->
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body class="homepage">
+
+    <div id="page-wrapper">
+
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
-    </body>
+
+    </div>
+
+</body>
 </html>

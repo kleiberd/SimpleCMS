@@ -31,7 +31,7 @@ security:
             form_login:
                 login_path: /admin/login
                 check_path: /admin/login
-                default_target_path: /admin
+                default_target_path: /admin/dashboard
                 csrf_provider: security.csrf.token_manager
 
             provider: admin_provider

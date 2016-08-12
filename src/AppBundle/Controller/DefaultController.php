@@ -14,17 +14,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return $this->render('default/index.html.twig');
     }
 
     /**
-     * @Route("/admin")
+     * @Route("/admin/dashboard")
      */
     public function adminAction()
     {
-        return new Response('<html><body>Admin Page!<br><a href="/admin/logout">Logout</a></body></html>');
+        return $this->render('admin/dashboard.html.twig');
     }
 }
