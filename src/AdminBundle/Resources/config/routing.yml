@@ -1,0 +1,11 @@
+login:
+    path: /admin/login
+    defaults: { _controller: AdminBundle:Security:login }
+
+logout:
+    path: /admin/logout
+    defaults: { _controller: AdminBundle:Security:logout }
+
+dashboard:
+    path: /admin/dashboard
+    defaults: { _controller: AdminBundle:Dashboard:index }

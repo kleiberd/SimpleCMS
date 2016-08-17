@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <title>Dashboard | SimpleCMS</title>
 
-    {% include 'admin/includes/head.html.twig' %}
+    {% include 'AdminBundle:_includes:head.html.twig' %}
 
     {% block style %}{% endblock %}
 
@@ -17,9 +17,9 @@
 
 <body class="site-navbar-small dashboard">
 
-{% include 'admin/includes/nav.html.twig' %}
+{% include 'AdminBundle:_includes:nav.html.twig' %}
 
-{% include 'admin/includes/menu.html.twig' %}
+{% include 'AdminBundle:_includes:menu.html.twig' %}
 
 <!-- Page -->
 <div class="page animsition">
@@ -34,9 +34,9 @@
 </div>
 <!-- End Page -->
 
-{% include 'admin/includes/footer.html.twig' %}
+{% include 'AdminBundle:_includes:footer.html.twig' %}
 
-{% include 'admin/includes/script.html.twig' %}
+{% include 'AdminBundle:_includes:script.html.twig' %}
 
 {% block script %}{% endblock %}
 

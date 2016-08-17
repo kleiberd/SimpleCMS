@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AdminBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\Admin;
+use AdminBundle\Entity\Admin;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
