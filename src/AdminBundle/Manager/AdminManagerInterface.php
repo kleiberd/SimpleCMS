@@ -11,4 +11,5 @@ interface AdminManagerInterface
 
     public function supportsClass($class);
 
+    public function getUserClass();
 }

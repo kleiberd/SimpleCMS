@@ -6,8 +6,64 @@
 
 {% endblock %}
 
+{% block body %}
+
+    <body class="site-navbar-small dashboard">
+
+{% endblock %}
+
 {% block content %}
 
-    <div class="row" data-plugin="matchHeight" data-by-row="true"></div>
+    <div class="row" data-plugin="masonry">
+        <div class="col-md-6 col-xs-12 masonry-item">
+            <div class="panel" id="todo-list">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Feladatlista</h3>
+                </div>
+                <ul class="list-task list-group" data-role="tasklist">
+                    <li class="list-group-item task-done" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule" checked="">
+                            <label for="inputSchedule">
+                                <span>Bejelentkeztetés áthelyezése az AdminBundle-be</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item task-done" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputCall" name="inputCheckboxesCall" checked="">
+                            <label for="inputCall">
+                                <span>Admin felhasználó adatainak módosítása <a href="{{ path('profile') }}">(Link)</a> </span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                            <label for="inputBook">
+                                <span>Translations fájlok átnézése</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                            <label for="inputBook">
+                                <span>Admin felhasználók CRUD</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="list-group-item" data-role="task">
+                        <div class="checkbox-custom checkbox-primary">
+                            <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                            <label for="inputBook">
+                                <span>Egyszerű CRUD generáló entitások alapján</span>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

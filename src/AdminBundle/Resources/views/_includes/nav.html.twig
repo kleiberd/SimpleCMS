@@ -7,7 +7,7 @@
         <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-collapse" data-toggle="collapse">
             <i class="icon md-more" aria-hidden="true"></i>
         </button>
-        <a class="navbar-brand navbar-brand-center" href="/">
+        <a class="navbar-brand navbar-brand-center" href="{{ path('dashboard') }}">
             <img class="navbar-brand-logo navbar-brand-logo-normal" src="{{ asset('bundles/admin/assets/images/logo.png') }}" title="Remark">
             <img class="navbar-brand-logo navbar-brand-logo-special" src="{{ asset('bundles/admin/assets/images/logo-blue.png') }}" title="Remark">
             <span class="navbar-brand-text hidden-xs"> CMS</span>
@@ -83,7 +83,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem">
+                            <a href="{{ path('profile') }}" role="menuitem">
                                 <i class="icon md-account" aria-hidden="true"></i> Profile
                             </a>
                         </li>

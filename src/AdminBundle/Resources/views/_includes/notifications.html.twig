@@ -1,0 +1,5 @@
+{% for flashMessage in app.session.flashbag.get('success') %}
+
+    {% include 'AdminBundle:_includes/notifications:success.html.twig' %}
+
+{% endfor %}

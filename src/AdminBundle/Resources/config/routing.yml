@@ -9,3 +9,7 @@ logout:
 dashboard:
     path: /dashboard
     defaults: { _controller: AdminBundle:Dashboard:index }
+
+profile:
+    path: /profile
+    defaults: { _controller: AdminBundle:Dashboard:profile }

@@ -1,8 +1,8 @@
-services:
-#    admin.example:
-#        class: AdminBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+parameters:
+    admin.form.type.edit_profile.class: 'AdminBundle\Form\Type\EditProfileType'
+    admin.form.type.change_profile_password.class: 'AdminBundle\Form\Type\ChangeProfilePasswordType'
 
+services:
     admin.user_manager:
         class: AdminBundle\Manager\AdminManager
         arguments: ['@doctrine.orm.entity_manager', "AdminBundle\\Entity\\Admin", true]
@@ -10,3 +10,14 @@ services:
     admin.user_provider:
         class: AdminBundle\Security\User\UserProvider
         arguments: ['@admin.user_manager']
+
+    admin.form.type.edit_profile:
+        class: %admin.form.type.edit_profile.class%
+        tags:
+            - { name: form.type, alias: admin_edit_profile }
+        arguments: ['@admin.user_manager']
+
+    admin.form.type.change_profile_password:
+        class: %admin.form.type.change_profile_password.class%
+        tags:
+            - { name: form.type, alias: admin_change_profile_password }

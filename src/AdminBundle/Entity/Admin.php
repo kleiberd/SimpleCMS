@@ -30,7 +30,7 @@ class Admin implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=25, unique=true)
-     * @Assert\NotBlank(groups={"username"})
+     * @Assert\NotBlank()
      */
     protected $username;
 
@@ -38,14 +38,15 @@ class Admin implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=64)
+     * @Assert\NotBlank(groups={"registration"})
      */
     protected $password;
 
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @Assert\Length(min = 8, max = 4096)
+     * @Assert\NotBlank(groups={"registration"})
+     * @Assert\Length(min = 4, max = 4096)
      */
     protected $plainPassword;
 
@@ -57,6 +58,36 @@ class Admin implements AdvancedUserInterface, \Serializable, EquatableInterface
      * @Assert\Email()
      */
     protected $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    protected $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    protected $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=25, nullable=true)
+     */
+    protected $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="text", nullable=true)
+     */
+    protected $comment;
 
     /**
      * @var ArrayCollection
@@ -155,6 +186,70 @@ class Admin implements AdvancedUserInterface, \Serializable, EquatableInterface
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 
     /**
