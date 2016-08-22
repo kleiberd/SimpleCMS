@@ -2,6 +2,11 @@ parameters:
     admin.form.type.edit_profile.class: 'AdminBundle\Form\Type\EditProfileType'
     admin.form.type.change_profile_password.class: 'AdminBundle\Form\Type\ChangeProfilePasswordType'
 
+    admin.menu.factory.class: 'AdminBundle\Menu\MenuBuilder'
+    admin.menu.menu.class: 'AdminBundle\Menu\Menu'
+    admin.menu.menu_manager.class: 'AdminBundle\Manager\MenuManager'
+    admin.menu.menu_twig_extension.class: 'AdminBundle\Twig\MenuExtension'
+
 services:
     admin.user_manager:
         class: AdminBundle\Manager\AdminManager
@@ -21,3 +26,30 @@ services:
         class: %admin.form.type.change_profile_password.class%
         tags:
             - { name: form.type, alias: admin_change_profile_password }
+
+    admin.menu.factory:
+        class: %admin.menu.factory.class%
+        arguments: ['@templating', '@event_dispatcher']
+
+    admin.menu.menu_manager:
+        class: %admin.menu.menu_manager.class%
+        arguments: ['@request_stack']
+        calls:
+            - [setContainer, ['@service_container']]
+
+    admin.menu.menu_twig_extension:
+        class: %admin.menu.menu_twig_extension.class%
+        public: false
+        tags:
+            - { name: twig.extension }
+        arguments: ['@admin.menu.menu_manager']
+
+    admin.menu_subscriber:
+       class: AdminBundle\EventListener\MenuSubscriber
+       tags:
+           - { name: kernel.event_subscriber }
+
+    admin.menu:
+       class: AdminBundle\Manager\MenuManager
+       factory: ['@admin.menu.factory', get]
+       arguments: ['admin_menu']

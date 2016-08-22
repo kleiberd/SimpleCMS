@@ -1,0 +1,55 @@
+{% import _self as macros %}
+
+{{ macros.draw(items) }}
+
+{% macro draw(children) %}
+
+    {% import _self as macros %}
+
+    {% if children|length > 0 %}
+
+        <div class="site-menubar">
+            <div class="site-menubar-body">
+                <ul class="site-menu">
+
+                    {% for child in children %}
+
+                        {% if child.children is not empty %}
+
+                            <li class="dropdown site-menu-item has-sub">
+                                <a class="dropdown-toggle" href="javascript:void(0)" data-dropdown-toggle="false">
+                                    {% if child.icon is not empty %}
+                                        <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
+                                    {% endif %}
+                                    <span class="site-menu-title">{{ child.name|trans }}</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="site-menu-scroll-wrap is-list">
+                                        {{ macros.draw(child.children) }}
+                                    </div>
+                                </div>
+                            </li>
+
+                        {% else %}
+
+                            <li class="site-menu-item {% if app.request.get('_route') == child.path %}active{% endif %}" >
+                                <a href="{% if child.path is not null %}{{ path(child.path, child.params) }}{% else %}javascript:void(0);{% endif %}">
+                                    {% if child.icon is not empty %}
+                                        <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
+                                    {% endif %}
+                                    <span class="site-menu-title">{{ child.name|trans }}</span>
+                                </a>
+                            </li>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endmacro %}

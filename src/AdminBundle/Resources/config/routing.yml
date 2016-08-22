@@ -13,3 +13,10 @@ dashboard:
 profile:
     path: /profile
     defaults: { _controller: AdminBundle:Dashboard:profile }
+
+
+#### Admin CRUD
+admin_show:
+    path: /admins/{id}
+    defaults: { _controller: AdminBundle:Admin:show }
+#### Admin CRUD
