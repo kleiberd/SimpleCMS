@@ -1,0 +1,9 @@
+admin:
+    menus:
+        settings:
+            title: 'Settings'
+
+        profile:
+            title: 'Profile'
+            path: profile
+            icon: md-account

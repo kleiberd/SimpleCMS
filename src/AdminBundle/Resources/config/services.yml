@@ -46,6 +46,8 @@ services:
 
     admin.menu_subscriber:
        class: AdminBundle\EventListener\MenuSubscriber
+       calls:
+           - [setContainer, ['@service_container']]
        tags:
            - { name: kernel.event_subscriber }
 

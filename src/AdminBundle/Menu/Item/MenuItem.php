@@ -8,6 +8,8 @@ class MenuItem implements MenuItemInterface
 {
     protected $name;
 
+    protected $title;
+
     protected $path;
 
     protected $params;
@@ -21,13 +23,15 @@ class MenuItem implements MenuItemInterface
     /**
      * MenuItem constructor.
      * @param $name
+     * @param $title
      * @param null $path
      * @param array $params
      * @param null $icon
      */
-    public function __construct($name, $path = null, array $params = [], $icon = null)
+    public function __construct($name, $title, $path = null, array $params = [], $icon = null)
     {
         $this->name = $name;
+        $this->title = $title;
         $this->path = $path;
         $this->params = $params;
         $this->icon = $icon;
@@ -48,6 +52,22 @@ class MenuItem implements MenuItemInterface
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 
     /**

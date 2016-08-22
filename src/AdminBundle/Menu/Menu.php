@@ -112,6 +112,13 @@ class Menu implements MenuInterface
         return $this;
     }
 
+    public function getChild($name)
+    {
+        return $this->children->filter(function($item) use ($name) {
+            return ($item->getName() == $name) ? $item : null;
+        });
+    }
+
     /**
      * @return string
      */

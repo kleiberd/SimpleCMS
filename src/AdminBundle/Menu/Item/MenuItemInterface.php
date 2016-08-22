@@ -12,6 +12,11 @@ interface MenuItemInterface
     public function setName($name);
 
     /**
+     * @param $title
+     */
+    public function setTitle($title);
+
+    /**
      * @param string $path
      */
     public function setPath($path);

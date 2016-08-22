@@ -1,6 +1,0 @@
-crud:
-    admins:
-        entity: AdminBundle:Entity:Admin
-
-    menu:
-        - admins

@@ -29,6 +29,18 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('url_prefix')
                     ->defaultValue("/admin")
                 ->end()
+                ->arrayNode('menus')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('title')->end()
+                            ->scalarNode('path')->end()
+                            ->scalarNode('icon')->end()
+                            ->scalarNode('parent')->end()
+                            ->arrayNode('params')
+                                ->prototype('scalar')->end()
+                            ->end()
+                        ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

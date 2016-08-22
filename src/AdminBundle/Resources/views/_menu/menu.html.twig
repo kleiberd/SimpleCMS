@@ -10,45 +10,93 @@
 
         <div class="site-menubar">
             <div class="site-menubar-body">
-                <ul class="site-menu">
+                <div>
+                    <div>
+                        <ul class="site-menu">
 
-                    {% for child in children %}
+                            {% for child in children %}
 
-                        {% if child.children is not empty %}
+                                {% if child.children is not empty %}
 
-                            <li class="dropdown site-menu-item has-sub">
-                                <a class="dropdown-toggle" href="javascript:void(0)" data-dropdown-toggle="false">
-                                    {% if child.icon is not empty %}
-                                        <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
-                                    {% endif %}
-                                    <span class="site-menu-title">{{ child.name|trans }}</span>
-                                    <span class="site-menu-arrow"></span>
-                                </a>
-                                <div class="dropdown-menu">
-                                    <div class="site-menu-scroll-wrap is-list">
-                                        {{ macros.draw(child.children) }}
-                                    </div>
-                                </div>
-                            </li>
+                                    <li class="dropdown site-menu-item has-sub">
+                                        <a class="dropdown-toggle" href="javascript:void(0)" data-dropdown-toggle="false">
+                                            {% if child.icon is not empty %}
+                                                <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
+                                            {% endif %}
+                                            <span class="site-menu-title">{{ child.title|trans }}</span>
+                                            <span class="site-menu-arrow"></span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <div class="site-menu-scroll-wrap is-list">
+                                                <div>
+                                                    <div>
+                                                    {{ macros.draw_sub(child.children) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
 
-                        {% else %}
+                                {% else %}
 
-                            <li class="site-menu-item {% if app.request.get('_route') == child.path %}active{% endif %}" >
-                                <a href="{% if child.path is not null %}{{ path(child.path, child.params) }}{% else %}javascript:void(0);{% endif %}">
-                                    {% if child.icon is not empty %}
-                                        <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
-                                    {% endif %}
-                                    <span class="site-menu-title">{{ child.name|trans }}</span>
-                                </a>
-                            </li>
+                                    <li class="site-menu-item {% if child.path is not null and app.request.get('_route') == child.path %}active{% endif %}" >
+                                        <a href="{% if child.path is not null %}{{ path(child.path, child.params) }}{% else %}javascript:void(0);{% endif %}">
+                                            {% if child.icon is not empty %}
+                                                <i class="site-menu-icon {{ child.icon }}" aria-hidden="true"></i>
+                                            {% endif %}
+                                            <span class="site-menu-title">{{ child.title|trans }}</span>
+                                        </a>
+                                    </li>
 
-                        {% endif %}
+                                {% endif %}
 
-                    {% endfor %}
+                            {% endfor %}
 
-                </ul>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+
+    {% endif %}
+
+{% endmacro %}
+
+{% macro draw_sub(children) %}
+
+    {% import _self as macros %}
+
+    {% if children|length > 0 %}
+
+        <ul class="site-menu-sub site-menu-normal-list">
+
+            {% for child in children %}
+
+                {% if child.children is not empty %}
+
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <span class="site-menu-title">{{ child.name|trans }}</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                                {{ macros.draw_sub(child.children) }}
+                        </ul>
+                    </li>
+
+                {% else %}
+
+                    <li class="site-menu-item">
+                        <a class="animsition-link" href="{% if child.path is not null %}{{ path(child.path, child.params) }}{% else %}javascript:void(0);{% endif %}">
+                            <span class="site-menu-title">{{ child.name|trans }}</span>
+                        </a>
+                    </li>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </ul>
 
     {% endif %}
 
