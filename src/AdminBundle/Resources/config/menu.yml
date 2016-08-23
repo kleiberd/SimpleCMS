@@ -2,6 +2,7 @@ admin:
     menus:
         settings:
             title: 'Settings'
+            icon: md-settings
 
         profile:
             title: 'Profile'

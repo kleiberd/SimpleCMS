@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Settings</source>
+                <target>Beállítások</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>lang_en</source>
+                <target>Angol</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>lang_hu</source>
+                <target>Magyar</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Profile</source>
+                <target>Profil</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Logout</source>
+                <target>Kijelentkezés</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

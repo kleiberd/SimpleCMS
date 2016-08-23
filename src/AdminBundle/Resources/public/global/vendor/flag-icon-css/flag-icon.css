@@ -248,7 +248,7 @@
 .flag-icon-ga {
   background-image: url(flags/ga.svg);
 }
-.flag-icon-gb {
+.flag-icon-gb, .flag-icon-en  {
   background-image: url(flags/gb.svg);
 }
 .flag-icon-gd {

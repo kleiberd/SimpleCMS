@@ -14,6 +14,10 @@ profile:
     path: /profile
     defaults: { _controller: AdminBundle:Dashboard:profile }
 
+locale:
+    path: /locale/{_locale}
+    defaults: { _controller: AdminBundle:Dashboard:locale }
+
 
 #### Admin CRUD
 admin_show:

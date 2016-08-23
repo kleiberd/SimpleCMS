@@ -25,6 +25,7 @@ class AdminExtension extends Extension
         $container->setParameter('admin.url_prefix', $config['url_prefix']);
         $container->setParameter('twig.form.resources', ['AdminBundle:_form:material.html.twig']);
         $container->setParameter('admin.menus', $config['menus']);
+        $container->setParameter('admin.locales', $config['locales']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

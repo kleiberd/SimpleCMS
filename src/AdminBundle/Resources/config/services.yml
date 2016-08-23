@@ -6,6 +6,7 @@ parameters:
     admin.menu.menu.class: 'AdminBundle\Menu\Menu'
     admin.menu.menu_manager.class: 'AdminBundle\Manager\MenuManager'
     admin.menu.menu_twig_extension.class: 'AdminBundle\Twig\MenuExtension'
+    admin.twig.variable_twig_extension.class: 'AdminBundle\Twig\VariableExtension'
 
 services:
     admin.user_manager:
@@ -55,3 +56,22 @@ services:
        class: AdminBundle\Manager\MenuManager
        factory: ['@admin.menu.factory', get]
        arguments: ['admin_menu']
+
+    admin.locale_listener:
+        class: AdminBundle\EventListener\LocaleSubscriber
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    admin.route_listener:
+        class: AdminBundle\EventListener\LastRouteSubscriber
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    admin.variable_twig_extension:
+        class: %admin.twig.variable_twig_extension.class%
+        public: false
+        tags:
+            - { name: twig.extension }
+        arguments: ['@service_container']

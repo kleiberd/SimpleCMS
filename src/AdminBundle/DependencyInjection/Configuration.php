@@ -40,6 +40,10 @@ class Configuration implements ConfigurationInterface
                                 ->prototype('scalar')->end()
                             ->end()
                         ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('locales')
+                    ->prototype('scalar')
                 ->end()
             ->end();
 

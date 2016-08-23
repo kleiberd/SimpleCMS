@@ -60,4 +60,11 @@ class DashboardController extends Controller
             'passwordForm' => $passwordForm->createView()
         ]);
     }
+
+    public function localeAction(Request $request)
+    {
+        $route = $request->getSession()->get('last_route');
+
+        return $this->redirect($this->generateUrl($route['name'], $route['params']));
+    }
 }
