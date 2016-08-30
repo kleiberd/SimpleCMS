@@ -75,3 +75,7 @@ services:
         tags:
             - { name: twig.extension }
         arguments: ['@service_container']
+
+    admin.datatable.entity:
+            class: AdminBundle\Datatables\EntityDatatable
+            parent: sg_datatables.datatable.abstract

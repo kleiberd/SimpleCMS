@@ -1,0 +1,75 @@
+{% extends('AdminBundle:_layout:admin.html.twig') %}
+
+{% block style %}
+
+    <!--<link rel="stylesheet" href="{{ asset('bundles/admin/global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/admin/global/vendor/datatables-responsive/dataTables.responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/admin/assets/examples/css/tables/datatable.css') }}">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-colvis-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.css">
+
+{% endblock %}
+
+{% block body %}
+
+    <body class="site-navbar-small">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions"></div>
+            <h3 class="panel-title">Basic</h3>
+        </header>
+        <div class="panel-body">
+            <table class="table table-hover dataTable table-striped width-full" id="entity-index">
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column | trans }}</th>
+                    {% endfor %}
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for element in elements %}
+                    <tr>
+                        {% for column in columns %}
+                            <td>{{ attribute(element, column) }}</td>
+                        {% endfor %}
+                        <td class="actions">
+                            {% for action in actions %}
+                                <a href="{{ path(('entity_' ~ action), {'name' : name, 'id' : element.id}) }}" class="btn btn-sm btn-icon btn-pure btn-default on-default waves-effect waves-classic" data-toggle="tooltip" data-original-title="{{ action | trans }}"><i class="icon md-{{ action }}" aria-hidden="true"></i></a>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End Panel Table Individual column searching -->
+
+{% endblock %}
+
+{% block script %}
+
+    <!--<script src="{{ asset('bundles/admin/global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('bundles/admin/global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('bundles/admin/global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
+    <script src="{{ asset('bundles/admin/global/js/components/datatables.js') }}"></script>-->
+    <script src="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-colvis-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.js"></script>
+    <!--<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>-->
+
+    <script>
+        (function() {
+            $(document).ready(function() {
+                $('#entity-index').DataTable();
+            });
+        })();
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+admin:
+    entities:
+        admins:
+            entity: AdminBundle:Admin
+            columns: ['username', 'email', 'firstname', 'lastname']
+            actions: ['edit', 'delete']
+            fields:
+                firstname:
+                    type: text
+                lastname:
+                    type: text
+                phone:
+                    type: text
+                comment:
+                    type: textarea

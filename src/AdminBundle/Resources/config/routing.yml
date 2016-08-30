@@ -18,9 +18,29 @@ locale:
     path: /locale/{_locale}
     defaults: { _controller: AdminBundle:Dashboard:locale }
 
+entity_index:
+    path: /entity/{name}
+    defaults: { _controller: AdminBundle:Entity:index }
 
-#### Admin CRUD
-admin_show:
-    path: /admins/{id}
-    defaults: { _controller: AdminBundle:Admin:show }
-#### Admin CRUD
+entity_index_results:
+    path: /entity/{name}/results
+    defaults: { _controller: AdminBundle:Entity:indexResults }
+
+entity_edit:
+    path: /entity/{name}/{id}/edit
+    defaults: { _controller: AdminBundle:Entity:edit }
+    requirements:
+        id:  \d+
+
+entity_delete:
+    path: /entity/{name}/{id}/delete
+    defaults: { _controller: AdminBundle:Entity:delete }
+    requirements:
+            id:  \d+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation
